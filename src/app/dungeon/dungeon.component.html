@@ -1,0 +1,6 @@
+<form>
+  <label *ngFor="let item of items">
+    <input type="checkbox" [(ngModel)]="item.checked" /> {{ item.label }}
+  </label>
+
+</form>

@@ -1,0 +1,46 @@
+{
+  "name": "dungeon-helper",
+  "version": "0.0.0",
+  "scripts": {
+    "ng": "ng",
+    "start": "ng serve -o",
+    "build": "ng build",
+    "watch": "ng build --watch --configuration development",
+    "serve:ssr:dungeon-helper": "node dist/dungeon-helper/server/server.mjs"
+  },
+  "private": true,
+  "dependencies": {
+    "@angular/animations": "^17.3.0",
+    "@angular/cdk": "^17.3.9",
+    "@angular/common": "^17.3.0",
+    "@angular/compiler": "^17.3.0",
+    "@angular/core": "^17.3.0",
+    "@angular/forms": "^17.3.0",
+    "@angular/material": "^17.3.9",
+    "@angular/platform-browser": "^17.3.0",
+    "@angular/platform-browser-dynamic": "^17.3.0",
+    "@angular/platform-server": "^17.3.0",
+    "@angular/router": "^17.3.0",
+    "@angular/ssr": "^17.3.6",
+    "@dice-roller/rpg-dice-roller": "^5.5.0",
+    "axios": "^1.6.8",
+    "express": "^4.18.2",
+    "ngx-loading": "^17.0.0",
+    "rxjs": "~7.8.0",
+    "tslib": "^2.3.0",
+    "zone.js": "~0.14.3"
+  },
+  "devDependencies": {
+    "@angular-devkit/build-angular": "^17.3.6",
+    "@angular/cli": "^17.3.6",
+    "@angular/compiler-cli": "^17.3.0",
+    "@types/express": "^4.17.17",
+    "@types/node": "^18.18.0",
+    "angular-in-memory-web-api": "^0.17.0",
+    "typescript": "~5.4.2"
+  },
+  "description": "This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.6.",
+  "main": "index.js",
+  "author": "",
+  "license": "ISC"
+}

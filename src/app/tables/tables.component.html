@@ -1,0 +1,30 @@
+<div class="container-fluid">
+  <div class="d-flex mt-3 mb-3">Encounters</div>
+
+  <div class="table-responsive">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Name</th>
+          <th>Dice</th>
+          <th>Entity</th>
+          <th>Result</th> <!-- New column for displaying the result -->
+          <th>Amount</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let enc of encounters; let i = index">
+          <td>{{ i + 1 }}</td>
+          <td>{{ enc.name }}</td>
+          <td>{{ enc.dice }}</td>
+          <td>
+            <button class="btn-roll" (click)="rollForEntity(enc)">Roll</button>
+          </td>
+          <td>{{ enc.result }}</td> <!-- Display the result here -->
+          <td *ngIf="showResult">{{ rolledAmount }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
