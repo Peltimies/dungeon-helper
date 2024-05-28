@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectorRef } from '@angular/core';
+import { EncounterService } from '../services/encounter.service';
+import { Encounter } from '../encounter';
 
 @Component({
   selector: 'app-dungeon',
@@ -6,57 +8,54 @@ import { Component } from '@angular/core';
   styleUrls: ['./dungeon.component.css'],
 })
 export class DungeonComponent {
-  items = [
-    { label: '', checked: false },
-    { label: '', checked: false },
-    { label: '', checked: false },
-    { label: '', checked: false },
-    { label: '', checked: false },
-    { label: '', checked: false },
-  ];
-
+  items = Array.from({ length: 6 }, () => ({ label: '', checked: false }));
+  encounterTable: Encounter[] = [];
   encounterMessage: string | null = null;
   turnMessage: string | null = null;
   allChecked = false;
   turns = 0;
+  showResult = false;
 
-  encounterTable = [
-    'Bandits',
-    'Anturai',
-    'Wild animals',
-    'Rangers',
-    'Hunters',
-    'Cultists',
-  ];
+  constructor(
+    private encounterService: EncounterService,
+    private cdr: ChangeDetectorRef
+  ) {
+    this.fetchEncounters();
+  }
+
+  fetchEncounters(): void {
+    this.encounterService.getEncounters().subscribe({
+      next: (data) => (this.encounterTable = data),
+      error: (error) => console.error('There was an error!', error),
+    });
+  }
 
   checkEncounters(): void {
-    const firstChecked = this.items[0].checked;
-    const secondChecked = this.items[1].checked;
-    const thirdChecked = this.items[2].checked;
-    const fourthChecked = this.items[3].checked;
-    const fifthChecked = this.items[4].checked;
-    const sixthChecked = this.items[5].checked;
-    const isProblematicChecked =
-      firstChecked ||
-      secondChecked ||
-      sixthChecked ||
-      fourthChecked ||
-      fifthChecked;
+    const problematicChecked = this.items
+      .filter((_, index) => index !== 2 && index !== 5)
+      .some((item) => item.checked);
 
-    if (thirdChecked || !isProblematicChecked) {
+    if (this.items[2].checked || !problematicChecked) {
       const encounterChance = Math.floor(Math.random() * 6);
       console.log(encounterChance, 'encounterChance');
-
       if (encounterChance === 0) {
-        // 1 in 6 chance
         const randomEncounterIndex = Math.floor(
           Math.random() * this.encounterTable.length
         );
-        this.encounterMessage = `Encounter: ${this.encounterTable[randomEncounterIndex]}`;
+        const selectedEncounter = this.encounterTable[randomEncounterIndex];
+        const randomEntityIndex = Math.floor(
+          Math.random() * selectedEncounter.entities.length
+        );
+        const randomEntity =
+          selectedEncounter.entities[randomEntityIndex].entity;
+        this.encounterMessage = `Encounter: ${randomEntity}`;
+        this.showResult = true;
+      } else {
+        this.encounterMessage = null;
       }
     }
 
-    if (sixthChecked) {
+    if (this.items[5].checked) {
       this.turns++;
       this.turnMessage = `One dungeon turn has passed. Total turns: ${this.turns}`;
     } else {
@@ -65,7 +64,7 @@ export class DungeonComponent {
 
     this.checkAllChecked();
 
-    if (!thirdChecked && !sixthChecked) {
+    if (!this.items[2].checked && !this.items[5].checked) {
       this.encounterMessage = null;
     }
   }
