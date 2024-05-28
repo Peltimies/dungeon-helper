@@ -41,17 +41,18 @@
 }
 
 .btn-roll {
-  padding: 6px 12px;
-  font-size: 14px;
-  line-height: 1.42857143;
-  border-radius: 4px;
-  cursor: pointer;
-  background-color: #007bff;
-  color: #fff;
-  border: 1px solid #007bff;
+  background: linear-gradient(to bottom, #ff9999, #ff6666);
+}
+
+img {
+  width: 20px;
+  height: 20px;
 }
 
 .btn-roll:hover {
-  background-color: #0056b3;
-  border-color: #0056b3;
+  background: linear-gradient(to bottom, #ff6666, #ff9999);
+}
+
+.fixed-width {
+  width: 300px; /* Adjust the width as needed */
 }
