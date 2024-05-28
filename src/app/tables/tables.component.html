@@ -10,7 +10,7 @@
           <th>Dice</th>
           <th>Entity</th>
           <th>Result</th> <!-- New column for displaying the result -->
-          <th>Amount</th>
+
         </tr>
       </thead>
       <tbody>
@@ -22,7 +22,6 @@
             <button class="btn-roll" (click)="rollForEntity(enc)">Roll</button>
           </td>
           <td>{{ enc.result }}</td> <!-- Display the result here -->
-          <td *ngIf="showResult">{{ rolledAmount }}</td>
         </tr>
       </tbody>
     </table>

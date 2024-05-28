@@ -26,6 +26,8 @@
     "axios": "^1.6.8",
     "express": "^4.18.2",
     "ngx-loading": "^17.0.0",
+    "rpg-awesome": "^0.2.0",
+    "rpgui": "^1.0.3",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.14.3"
