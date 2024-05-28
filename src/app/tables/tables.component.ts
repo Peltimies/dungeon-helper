@@ -12,6 +12,7 @@ export class TablesComponent {
   encounters: Encounter[] = [];
   showResult = false;
   rolledAmount: number = 0;
+  addnew = true;
 
   constructor(
     private encounterService: EncounterService,
@@ -31,22 +32,5 @@ export class TablesComponent {
     encounter.result = randomEntity; // Store the result in the encounter object
     this.cdr.detectChanges(); // Update the view
     this.showResult = true;
-  }
-
-  rollAmount(): number {
-    return Math.floor(Math.random() * 6);
-  }
-
-  private getRandomEntity(): string {
-    const entities = [
-      'Bandits',
-      'Anturai',
-      'Wild animals',
-      'Rangers',
-      'Hunters',
-      'Cultists',
-    ]; // Define your entities
-    const randomIndex = Math.floor(Math.random() * entities.length);
-    return entities[randomIndex];
   }
 }

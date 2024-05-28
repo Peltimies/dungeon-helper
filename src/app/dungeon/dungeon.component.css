@@ -1,0 +1,42 @@
+/* Custom styles */
+
+label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+input[type='checkbox'] {
+  margin-right: 0px;
+}
+
+.encounter-message,
+.turn-message {
+  margin-top: 20px;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.encounter-message {
+  background-color: #e7f3fe;
+  border: 1px solid #b3d4fc;
+  color: #31708f;
+}
+
+.turn-message {
+  background-color: #eaf7ea;
+  border: 1px solid #c3e6cb;
+  color: #155724;
+}
+
+/* Custom styles */
+.row {
+  margin-top: 20px; /* Add some top margin */
+}
+
+.col-2 {
+  padding: 0px; /* Adjust spacing between checkboxes */
+}
+
+.form-check-input {
+  transform: scale(1.5); /* Increase size of checkboxes */
+}

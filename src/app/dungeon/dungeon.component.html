@@ -1,6 +1,21 @@
-<form>
-  <label *ngFor="let item of items">
-    <input type="checkbox" [(ngModel)]="item.checked" /> {{ item.label }}
-  </label>
+<div class="container">
+  <form>
+    <div class="row">
+      <div class="col-2" *ngFor="let item of items; let i = index">
+        <label class="form-check-label">
+          <input class="form-check-input" type="checkbox" [(ngModel)]="item.checked" name="checkbox{{i}}"
+            (change)="checkEncounters()" [disabled]="allChecked" (click)="onCheckboxClick(item, $event)" />
+          {{ item.label }}
+        </label>
+      </div>
+    </div>
+  </form>
 
-</form>
+  <div *ngIf="encounterMessage" class="alert alert-info encounter-message">
+    {{ encounterMessage }}
+  </div>
+
+  <div *ngIf="turnMessage" class="alert alert-success turn-message">
+    {{ turnMessage }}
+  </div>
+</div>
