@@ -15,7 +15,9 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { NgxLoadingModule } from 'ngx-loading';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryService } from './services/in-memory.service';
-import { provideHttpClient, withFetch } from '@angular/common/http'; // Import the new dependencies
+import { provideHttpClient, withFetch } from '@angular/common/http';
+import { LoginComponent } from './login/login.component';
+import { ErrorComponent } from './error/error.component'; // Import the new dependencies
 
 @NgModule({
   declarations: [
@@ -24,6 +26,8 @@ import { provideHttpClient, withFetch } from '@angular/common/http'; // Import t
     MenuComponent,
     DungeonComponent,
     TablesComponent,
+    LoginComponent,
+    ErrorComponent,
   ],
   imports: [
     BrowserModule,
