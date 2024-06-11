@@ -13,6 +13,7 @@ export class TablesComponent {
   showResult = false;
   rolledAmount: number = 0;
   addnew = true;
+  id: any;
 
   constructor(
     private encounterService: EncounterService,
@@ -32,5 +33,10 @@ export class TablesComponent {
     encounter.result = randomEntity; // Store the result in the encounter object
     this.cdr.detectChanges(); // Update the view
     this.showResult = true;
+  }
+
+  deleteTable(s: Encounter) {
+    this.id = s._id;
+    this.encounters = s.encounter;
   }
 }

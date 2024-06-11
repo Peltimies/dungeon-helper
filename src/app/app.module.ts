@@ -7,7 +7,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { MenuComponent } from './menu/menu.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DungeonComponent } from './dungeon/dungeon.component';
 import { TablesComponent } from './tables/tables.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
@@ -18,6 +18,12 @@ import { InMemoryService } from './services/in-memory.service';
 import { provideHttpClient, withFetch } from '@angular/common/http';
 import { LoginComponent } from './login/login.component';
 import { ErrorComponent } from './error/error.component'; // Import the new dependencies
+import {
+  SocialLoginModule,
+  SocialAuthServiceConfig,
+  GoogleLoginProvider,
+  GoogleSigninButtonModule,
+} from '@abacritt/angularx-social-login';
 
 @NgModule({
   declarations: [
@@ -35,12 +41,25 @@ import { ErrorComponent } from './error/error.component'; // Import the new depe
     FormsModule,
     HttpClientModule,
     HttpClientInMemoryWebApiModule.forRoot(InMemoryService),
+    ReactiveFormsModule,
+    SocialLoginModule,
+    GoogleSigninButtonModule,
   ],
   providers: [
-    provideClientHydration(),
-    provideAnimationsAsync(),
-    HttpClient,
-    provideHttpClient(withFetch()), // Add the withFetch() to enable fetch API for HttpClient
+    {
+      provide: 'SocialAuthServiceConfig',
+      useValue: {
+        autoLogin: false,
+        providers: [
+          {
+            id: GoogleLoginProvider.PROVIDER_ID,
+            provider: new GoogleLoginProvider(
+              '410735374927-qt52r4bc2nm4080175btdgsm8r3bvftl.apps.googleusercontent.com'
+            ),
+          },
+        ],
+      } as SocialAuthServiceConfig,
+    },
   ],
   bootstrap: [AppComponent],
 })
