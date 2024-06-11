@@ -35,8 +35,8 @@ export class TablesComponent {
     this.showResult = true;
   }
 
-  deleteTable(s: Encounter) {
-    this.id = s._id;
-    this.encounters = s.encounter;
-  }
+  //deleteTable(s: Encounter) {
+  //  this.id = s._id;
+  //  this.encounters = s.encounter;
+  //}
 }

@@ -33,14 +33,6 @@ export class NavbarComponent implements OnDestroy {
   }
 
   doLogout() {
-    console.log('logout');
     this.login = false;
-    this.authService.logout();
-    /*
-     Lähetetään servicelle tieto logoutista.
-     Servicen toinen metodi välittää tiedon login-komponettiin, 
-     jolloin siellä laukaistaan Googlen signOut()-metodi.
-    */
-    this.authService.sendLogoutClick();
   }
 }
